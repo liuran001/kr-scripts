@@ -25,12 +25,8 @@ jobs:
       - uses: eskatos/gradle-command-action@v1
         with:
           gradle-version: 8.0
+          arguments: build
 
-      - name: Build project
-        run: |
-          if ${{ !!github.head_ref }}; then echo "::warning:: Gradle $WARN_ON_PR"; fi
-          gradle wrapper
-          bash gradlew build
 
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
